@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class IDirectionTest {
 
     @Test
-    void rotateLeft() {
+    void testRotateLeft() {
         IDirection direction = new Compass(Compass.Bearing.NORTH);
 
         direction.rotateLeft();
@@ -23,11 +23,27 @@ class IDirectionTest {
     }
 
     @Test
-    void rotateRight() {
+    void testRotateRight() {
+        IDirection direction = new Compass(Compass.Bearing.NORTH);
+
+        direction.rotateRight();
+        assertEquals("E", direction.toString());
+
+        direction.rotateRight();
+        assertEquals("S", direction.toString());
+
+        direction.rotateRight();
+        assertEquals("W", direction.toString());
+
+        direction.rotateRight();
+        assertEquals("N", direction.toString());
     }
 
+
+
+
     @Test
-    void getNextMovePosition() {
+    void testNextMovePosition() {
         IDirection direction = new Compass(Compass.Bearing.NORTH);
     }
 
