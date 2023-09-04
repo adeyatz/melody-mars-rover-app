@@ -31,8 +31,15 @@ public class Compass implements IDirection {
 
     @Override
     public Position getNextMovePosition(Position currentPosition) {
-        return null;
+        Position nextPosition = switch (bearing) {
+            case NORTH -> currentPosition.getAdjacent(Position.Adjacent.N);
+            case EAST -> currentPosition.getAdjacent(Position.Adjacent.E);
+            case SOUTH -> currentPosition.getAdjacent(Position.Adjacent.S);
+            case WEST -> currentPosition.getAdjacent(Position.Adjacent.W);
+        };
+        return nextPosition;
     }
+
 
     @Override
     public String toString() {
