@@ -46,6 +46,10 @@ class CartesianPositionTest {
 
     @Test
     void getAdjacentPosition() {
+        CartesianPosition p1 = new CartesianPosition( 0, 0);
+        Position expected = new CartesianPosition( 0,1);
+        Position pNorth = p1.getAdjacentPosition (Position.AdjacentPositions.N);
+        assertEquals(expected, pNorth);
     }
 
     @Test

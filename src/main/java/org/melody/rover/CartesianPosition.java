@@ -20,6 +20,7 @@ class CartesianPosition extends Position {
         return null;
     }
 
+
     @Override
     public int compareTo(Object o) {
         return 0;
