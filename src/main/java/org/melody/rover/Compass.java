@@ -11,7 +11,12 @@ public class Compass implements IDirection {
     }
     @Override
     public void rotateLeft() {
-
+        bearing = switch (bearing) {
+            case NORTH -> Bearing.WEST;
+            case WEST -> Bearing.SOUTH;
+            case SOUTH -> Bearing.EAST;
+            case EAST -> Bearing.NORTH;
+        };
     }
 
     @Override
