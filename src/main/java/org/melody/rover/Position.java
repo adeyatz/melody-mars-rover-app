@@ -22,4 +22,6 @@ public abstract class Position implements Comparable {
     protected abstract boolean equals(Position other);
 
     protected abstract Position getAdjacent(Adjacent direction);
+
+    public abstract String toString();
 }

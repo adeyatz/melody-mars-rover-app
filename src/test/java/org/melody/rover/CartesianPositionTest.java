@@ -46,7 +46,7 @@ class CartesianPositionTest {
 
     @Test
     void testGetAdjacentPosition() {
-        CartesianPosition p1 = new CartesianPosition( 0, 0);
+        Position p1 = new CartesianPosition( 0, 0);
 
         Position pN = p1.getAdjacent(Position.Adjacent.N);
         Position pNE = p1.getAdjacent(Position.Adjacent.NE);
@@ -68,7 +68,26 @@ class CartesianPositionTest {
 
     }
 
+
+    @Test
+    void testToStringMethod() {
+        Position p1 = new CartesianPosition( 0, 0);
+
+        assertEquals("0 0", p1.toString());
+        assertEquals("-1 -1", p1.getAdjacent(Position.Adjacent.SW).toString());
+    }
+
+    @Test
+    void testToStringMethodBigNumbers() {
+        Position p1 = new CartesianPosition( 1000, 99999);
+
+        assertEquals("1000 99999", p1.toString());
+    }
+
+
     @Test
     void compareTo() {
     }
+
+
 }

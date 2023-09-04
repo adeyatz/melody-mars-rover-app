@@ -39,6 +39,11 @@ class CartesianPosition extends Position {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%d %d", x, y);
+    }
+
 
     @Override
     public int compareTo(Object o) {
