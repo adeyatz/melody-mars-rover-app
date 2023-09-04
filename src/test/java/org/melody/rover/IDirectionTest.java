@@ -43,8 +43,14 @@ class IDirectionTest {
 
 
     @Test
-    void testNextMovePosition() {
+    void testGetNextMovePosition() {
         IDirection direction = new Compass(Compass.Bearing.NORTH);
+
+        Position currentPosition = new CartesianPosition(0,0);
+        Position expectedPosition = new CartesianPosition(0,1);
+
+        assertEquals(expectedPosition, direction.getNextMovePosition(currentPosition));
+
     }
 
     @Test
