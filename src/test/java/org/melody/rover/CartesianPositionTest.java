@@ -1,7 +1,6 @@
 package org.melody.rover;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CartesianPositionTest {
@@ -9,14 +8,14 @@ class CartesianPositionTest {
     @Test
     public void testCartesianPositionConstructor() {
 
-        CartesianPosition position = new CartesianPosition(0,0);
+        Position position = new CartesianPosition(0,0);
         assertNotNull( position );
     }
 
     @Test
     void testEqualsCartesianPosition() {
-        CartesianPosition p1 = new CartesianPosition(0, 0);
-        CartesianPosition p2 = new CartesianPosition( 0, 0);
+        Position p1 = new CartesianPosition(0, 0);
+        Position p2 = new CartesianPosition( 0, 0);
 
         assertEquals( p1, p1);  // Same object
         assertEquals( p1, p2);  // Same coordinates
@@ -25,31 +24,48 @@ class CartesianPositionTest {
 
     @Test
     void testEqualsCartesianPosition55() {
-        CartesianPosition p1 = new CartesianPosition(5, 5);
-        CartesianPosition p2 = new CartesianPosition( 5, 5);
+        Position p1 = new CartesianPosition(5, 5);
+        Position p2 = new CartesianPosition( 5, 5);
 
         assertEquals( p1, p2);  // Same coordinates
     }
 
 
     @Test
-    void testNotEqualsCartesianPosition() {
-        CartesianPosition p1 = new CartesianPosition(0, 0);
-        CartesianPosition p2 = new CartesianPosition( 1, 0);
-        CartesianPosition p3 = new CartesianPosition( 0, 1);
+    void testNotEqualsCartesianPositionIncNull() {
+        Position p1 = new CartesianPosition(0, 0);
+        Position p2 = new CartesianPosition( 1, 0);
+        Position p3 = new CartesianPosition( 0, 1);
 
         assertNotEquals( p1, p2);
         assertNotEquals( p1, p3);
         assertNotEquals( p2, p3);
+        assertNotEquals( p1, null);
     }
 
 
     @Test
-    void getAdjacentPosition() {
+    void testGetAdjacentPosition() {
         CartesianPosition p1 = new CartesianPosition( 0, 0);
-        Position expected = new CartesianPosition( 0,1);
-        Position pNorth = p1.getAdjacentPosition (Position.AdjacentPositions.N);
-        assertEquals(expected, pNorth);
+
+        Position pN = p1.getAdjacent(Position.Adjacent.N);
+        Position pNE = p1.getAdjacent(Position.Adjacent.NE);
+        Position pE = p1.getAdjacent(Position.Adjacent.E);
+        Position pSE = p1.getAdjacent(Position.Adjacent.SE);
+        Position pS = p1.getAdjacent(Position.Adjacent.S);
+        Position pSW = p1.getAdjacent(Position.Adjacent.SW);
+        Position pW = p1.getAdjacent(Position.Adjacent.W);
+        Position pNW = p1.getAdjacent(Position.Adjacent.NW);
+
+        assertEquals(new CartesianPosition(0, 1), pN);
+        assertEquals(new CartesianPosition(1, 1), pNE);
+        assertEquals(new CartesianPosition(1, 0), pE);
+        assertEquals(new CartesianPosition(1, -1), pSE);
+        assertEquals(new CartesianPosition(0, -1), pS);
+        assertEquals(new CartesianPosition(-1, -1), pSW);
+        assertEquals(new CartesianPosition(-1, 0), pW);
+        assertEquals(new CartesianPosition(-1, 1), pNW);
+
     }
 
     @Test
