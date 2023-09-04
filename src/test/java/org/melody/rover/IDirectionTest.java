@@ -7,6 +7,19 @@ class IDirectionTest {
 
     @Test
     void rotateLeft() {
+        IDirection direction = new Compass(Compass.Bearing.NORTH);
+
+        direction.rotateLeft();
+        assertEquals("W", direction.toString());
+
+        direction.rotateLeft();
+        assertEquals("S", direction.toString());
+
+        direction.rotateLeft();
+        assertEquals("E", direction.toString());
+
+        direction.rotateLeft();
+        assertEquals("N", direction.toString());
     }
 
     @Test
