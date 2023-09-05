@@ -58,4 +58,15 @@ class VehicleManagerTest {
         assertFalse(vm.isPositionBlocked(testPosition));
 
     }
+
+    @Test
+    void testGetVehicle() {
+        VehicleManager vm = new VehicleManager();
+
+        Vehicle vehicle = new MarsRover (99,0, IRotator.Heading.NORTH);
+        vm.addVehicle(vehicle);     // Position 0,0 should now be blocked by another vehicle
+
+        assertEquals(vehicle, vm.getVehicle(new CartesianPosition(99,0)));
+        assertNull(vm.getVehicle(new CartesianPosition(98,0)));
+    }
 }

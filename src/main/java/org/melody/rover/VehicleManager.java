@@ -28,6 +28,16 @@ public class VehicleManager implements IBlocked {
         return vehicles.size();
     }
 
+    public Vehicle getVehicle (Position position) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getPosition().equals(position))
+                return vehicle;
+        }
+
+        return null;
+    }
+
+
     @Override
     public boolean isPositionBlocked(Position newPosition) {
 
