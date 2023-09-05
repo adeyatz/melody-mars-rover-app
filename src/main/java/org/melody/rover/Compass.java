@@ -1,37 +1,36 @@
 package org.melody.rover;
 
 import org.melody.rover.api.IRotator;
-import org.melody.rover.api.Position;
 
 public class Compass implements IRotator {
 
-    Bearing bearing;
+    Heading bearing;
 
-    public Compass (Bearing bearing) {
+    public Compass (Heading bearing) {
         this.bearing = bearing;
     }
 
     public void rotateLeft() {
         bearing = switch (bearing) {
-            case NORTH -> Bearing.WEST;
-            case WEST -> Bearing.SOUTH;
-            case SOUTH -> Bearing.EAST;
-            case EAST -> Bearing.NORTH;
+            case NORTH -> Heading.WEST;
+            case WEST -> Heading.SOUTH;
+            case SOUTH -> Heading.EAST;
+            case EAST -> Heading.NORTH;
         };
     }
 
 
     public void rotateRight() {
         bearing = switch (bearing) {
-            case NORTH -> Bearing.EAST;
-            case EAST -> Bearing.SOUTH;
-            case SOUTH -> Bearing.WEST;
-            case WEST -> Bearing.NORTH;
+            case NORTH -> Heading.EAST;
+            case EAST -> Heading.SOUTH;
+            case SOUTH -> Heading.WEST;
+            case WEST -> Heading.NORTH;
         };
     }
 
     @Override
-    public Bearing getBearing() {
+    public Heading getHeading() {
         return bearing;
     }
 

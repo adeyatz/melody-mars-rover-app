@@ -17,7 +17,7 @@ public abstract class Vehicle implements IMover, IRotator {
     }
 
     public Position getNextPosition () {
-        return switch (rotation.getBearing()) {
+        return switch (rotation.getHeading()) {
             case NORTH -> position.getNextDoor(Position.NextDoor.N);
             case EAST -> position.getNextDoor(Position.NextDoor.E);
             case SOUTH -> position.getNextDoor(Position.NextDoor.S);
@@ -33,8 +33,8 @@ public abstract class Vehicle implements IMover, IRotator {
         rotation.rotateLeft();
     }
 
-    public Bearing getBearing() {
-        return rotation.getBearing();
+    public Heading getHeading() {
+        return rotation.getHeading();
     }
 
     public IRotator getRotation() {

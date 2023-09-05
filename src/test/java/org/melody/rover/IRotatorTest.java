@@ -2,7 +2,6 @@ package org.melody.rover;
 
 import org.junit.jupiter.api.Test;
 import org.melody.rover.api.IRotator;
-import org.melody.rover.api.Position;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +9,7 @@ class IRotatorTest {
 
     @Test
     void testRotateLeft() {
-        IRotator direction = new Compass(Compass.Bearing.NORTH);
+        IRotator direction = new Compass(IRotator.Heading.NORTH);
 
         direction.rotateLeft();
         assertEquals("W", direction.toString());
@@ -27,7 +26,7 @@ class IRotatorTest {
 
     @Test
     void testRotateRight() {
-        IRotator direction = new Compass(Compass.Bearing.NORTH);
+        IRotator direction = new Compass(IRotator.Heading.NORTH);
 
         direction.rotateRight();
         assertEquals("E", direction.toString());
@@ -48,10 +47,10 @@ class IRotatorTest {
 
     @Test
     void testToStringMethodNorthEastSouthWest() {
-        IRotator dirN = new Compass(Compass.Bearing.NORTH);
-        IRotator dirE = new Compass(Compass.Bearing.EAST);
-        IRotator dirS = new Compass(Compass.Bearing.SOUTH);
-        IRotator dirW = new Compass(Compass.Bearing.WEST);
+        IRotator dirN = new Compass(IRotator.Heading.NORTH);
+        IRotator dirE = new Compass(IRotator.Heading.EAST);
+        IRotator dirS = new Compass(IRotator.Heading.SOUTH);
+        IRotator dirW = new Compass(IRotator.Heading.WEST);
 
         assertEquals("N", dirN.toString());
         assertEquals("E", dirE.toString());
