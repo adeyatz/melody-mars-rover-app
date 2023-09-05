@@ -41,8 +41,13 @@ public abstract class Vehicle implements IMover, IRotator {
         return rotation;
     }
 
-    public String toString () {
+    public String getType () {
         return type;
     }
+
+    public String toString () {
+        return String.format("%s %s", position.toString(), rotation.toString());
+    }
+
 
 }
