@@ -1,6 +1,9 @@
 package org.melody.rover;
 
 import org.junit.jupiter.api.Test;
+import org.melody.rover.api.IDirection;
+import org.melody.rover.api.Position;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class IDirectionTest {
@@ -49,7 +52,7 @@ class IDirectionTest {
         Position currentPosition = new CartesianPosition(0,0);
         Position expectedPosition = new CartesianPosition(0,1);
 
-        assertEquals(expectedPosition, direction.getNextMovePosition(currentPosition));
+        assertEquals(expectedPosition, direction.getNextMove(currentPosition));
     }
 
 
@@ -60,7 +63,7 @@ class IDirectionTest {
         Position currentPosition = new CartesianPosition(500,800);
         Position expectedPosition = new CartesianPosition(501,800);
 
-        assertEquals(expectedPosition, direction.getNextMovePosition(currentPosition));
+        assertEquals(expectedPosition, direction.getNextMove(currentPosition));
     }
 
 
@@ -76,14 +79,14 @@ class IDirectionTest {
 
         // LMLMLMLMM
         direction.rotateLeft();
-        currentPosition = direction.getNextMovePosition(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
         direction.rotateLeft();
-        currentPosition = direction.getNextMovePosition(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
         direction.rotateLeft();
-        currentPosition = direction.getNextMovePosition(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
         direction.rotateLeft();
-        currentPosition = direction.getNextMovePosition(currentPosition);
-        currentPosition = direction.getNextMovePosition(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
 
         assertEquals(expected, String.format("%s %s", currentPosition.toString(), direction.toString()));
     }
@@ -100,16 +103,16 @@ class IDirectionTest {
         String expected = "5 1 E";
 
         //MMRMMRMRRM
-        currentPosition = direction.getNextMovePosition(currentPosition);
-        currentPosition = direction.getNextMovePosition(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
         direction.rotateRight();
-        currentPosition = direction.getNextMovePosition(currentPosition);
-        currentPosition = direction.getNextMovePosition(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
         direction.rotateRight();
-        currentPosition = direction.getNextMovePosition(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
         direction.rotateRight();
         direction.rotateRight();
-        currentPosition = direction.getNextMovePosition(currentPosition);
+        currentPosition = direction.getNextMove(currentPosition);
 
         assertEquals(expected, String.format("%s %s", currentPosition.toString(), direction.toString()));
     }

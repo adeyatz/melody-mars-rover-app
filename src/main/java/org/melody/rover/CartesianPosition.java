@@ -1,5 +1,7 @@
 package org.melody.rover;
 
+import org.melody.rover.api.Position;
+
 class CartesianPosition extends Position {
 
     private int x,y;
@@ -11,12 +13,15 @@ class CartesianPosition extends Position {
 
 
     @Override
-    protected boolean equals(Position other) {
-        return (((CartesianPosition) other).x == x && ((CartesianPosition) other).y == y);
+    public boolean equals(Position position) {
+        if (position instanceof CartesianPosition) {
+            return (((CartesianPosition) position).x == x && ((CartesianPosition) position).y == y);
+        }
+        return false;
     }
 
     @Override
-    protected Position getAdjacent(Adjacent direction) {
+    public Position getNextDoor(NextDoor direction) {
         Position result = switch (direction) {
             case N -> new CartesianPosition(x, y + 1);
 
@@ -42,11 +47,5 @@ class CartesianPosition extends Position {
     @Override
     public String toString() {
         return String.format("%d %d", x, y);
-    }
-
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
     }
 }
