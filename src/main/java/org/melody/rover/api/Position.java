@@ -1,6 +1,6 @@
 package org.melody.rover.api;
 
-public abstract class Position {
+public abstract class Position implements Comparable {
 
     public enum NextDoor {
         N, NE, E, SE, S, SW, W, NW

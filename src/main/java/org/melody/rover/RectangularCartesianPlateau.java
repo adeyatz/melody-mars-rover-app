@@ -21,6 +21,8 @@ public class RectangularCartesianPlateau implements IPlateauBoundary {
     @Override
     public boolean isPositionInPlateauBoundary(Position position) {
         if (position instanceof CartesianPosition) {
+            CartesianPosition cp = (CartesianPosition) position;
+
 
         }
         return false;

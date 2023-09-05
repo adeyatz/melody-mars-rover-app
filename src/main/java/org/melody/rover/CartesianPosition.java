@@ -48,4 +48,18 @@ class CartesianPosition extends Position {
     public String toString() {
         return String.format("%d %d", x, y);
     }
+
+    @Override
+    public int compareTo(Object position) {
+        if (position instanceof CartesianPosition) {
+            if (((CartesianPosition) position).x < x  || ((CartesianPosition) position).y < y) {
+                return -1;
+            } else if (((CartesianPosition) position).x > x || ((CartesianPosition) position).y > y) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        return -1;
+    }
 }
