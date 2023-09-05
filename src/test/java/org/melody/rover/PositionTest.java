@@ -5,7 +5,7 @@ import org.melody.rover.api.Position;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CartesianPositionTest {
+class PositionTest {
 
     @Test
     public void testCartesianPositionConstructor() {

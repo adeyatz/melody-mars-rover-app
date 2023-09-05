@@ -6,7 +6,7 @@ import org.melody.rover.api.Position;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RectangularCartesianPlateauTest {
+class PlateauTest {
 
     @Test
     void testPlateauConstructor() {
