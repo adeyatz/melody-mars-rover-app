@@ -29,8 +29,13 @@ public class VehicleManager implements IBlocked {
     }
 
     @Override
-    public boolean isPositionBlocked(Position position) {
+    public boolean isPositionBlocked(Position newPosition) {
 
-        return true;
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getPosition().equals(newPosition))
+                return true;
+        }
+
+        return false;
     }
 }
