@@ -20,14 +20,13 @@ public class VehicleManager implements IBlocked {
         vehicles.add(vehicle);
     }
 
-    public void removeVehicle (Vehicle vehicle) {
-        vehicles.remove(vehicle);
+    public boolean removeVehicle (Vehicle vehicle) {
+        return vehicles.remove(vehicle);
     }
 
     public int getVehicleCount() {
         return vehicles.size();
     }
-
 
     @Override
     public boolean isPositionBlocked(Position position) {

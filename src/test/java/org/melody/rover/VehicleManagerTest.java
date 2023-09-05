@@ -19,7 +19,7 @@ class VehicleManagerTest {
 
 
     @Test
-    void addVehicle() {
+    void testAddVehicle() {
         VehicleManager vm = new VehicleManager();
 
         Position position = new CartesianPosition(10, 50);
@@ -31,7 +31,20 @@ class VehicleManagerTest {
     }
 
     @Test
-    void removeVehicle() {
+    void testRemoveVehicle() {
+        VehicleManager vm = new VehicleManager();
+
+        Vehicle vehicle = new MarsRover (99,-100, IRotator.Heading.NORTH);
+        vm.addVehicle(vehicle);
+        assertEquals(1, vm.getVehicleCount());
+
+        assertTrue(vm.removeVehicle(vehicle));
+        assertEquals(0, vm.getVehicleCount());
+        assertFalse(vm.removeVehicle(vehicle));
+    }
+
+    @Test
+    void testVehicleCount() {
     }
 
     @Test
