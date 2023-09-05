@@ -28,12 +28,33 @@ class RectangularCartesianPlateauTest {
 
 
     @Test
-    void isPositionInShapeBoundary() {
+    void testPositionInPlateauBoundary() {
 
-        IPlateauBoundary shape = new RectangularCartesianPlateau(5,5);
+        IPlateauBoundary plateau = new RectangularCartesianPlateau(5,5);
 
         Position position = new CartesianPosition(0,0);
+        assertTrue(plateau.isPositionInPlateauBoundary(position));
 
-        assertTrue(shape.isPositionInPlateauBoundary(position));
+        position = new CartesianPosition(5,5);
+        assertTrue(plateau.isPositionInPlateauBoundary(position));
+
+        position = new CartesianPosition(0,5);
+        assertTrue(plateau.isPositionInPlateauBoundary(position));
+
+        position = new CartesianPosition(5,0);
+        assertTrue(plateau.isPositionInPlateauBoundary(position));
+
+
+        position = new CartesianPosition(-1,0);
+        assertFalse (plateau.isPositionInPlateauBoundary(position));
+
+        position = new CartesianPosition(0,-1);
+        assertFalse (plateau.isPositionInPlateauBoundary(position));
+
+        position = new CartesianPosition(6,5);
+        assertFalse(plateau.isPositionInPlateauBoundary(position));
+
+        position = new CartesianPosition(5,6);
+        assertFalse(plateau.isPositionInPlateauBoundary(position));
     }
 }

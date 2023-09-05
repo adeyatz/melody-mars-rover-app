@@ -7,23 +7,20 @@ import java.security.InvalidParameterException;
 
 public class RectangularCartesianPlateau implements IPlateauBoundary {
 
-    int lowerLeftX, lowerLeftY, upperRightX, upperRightY;
+    Position ll, ur = null;
 
     public RectangularCartesianPlateau(int width, int height) throws IllegalArgumentException {
         if ((width <= 0) || (height <= 0))
             throw new IllegalArgumentException ("Width and Height must be greater than 0");
 
-        lowerLeftX = lowerLeftY = 0;
-        upperRightX = width;
-        upperRightY = height;
+        ll = new CartesianPosition(0,0);
+        ur = new CartesianPosition(width, height);
     }
 
     @Override
     public boolean isPositionInPlateauBoundary(Position position) {
         if (position instanceof CartesianPosition) {
-            CartesianPosition cp = (CartesianPosition) position;
-
-
+            return ((ll.compareTo(position) >= 0) && (ur.compareTo(position) <= 0));
         }
         return false;
     }
