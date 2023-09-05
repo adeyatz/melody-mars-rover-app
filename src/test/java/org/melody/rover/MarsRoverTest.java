@@ -41,7 +41,18 @@ class MarsRoverTest {
         assertEquals(MarsRover.MARS_ROVER,  rover.toString());
     }
 
+    @Test
+    void testMarsRoverMoves() {
+        Position startPosition = new CartesianPosition(2, 1);
+        IDirection direction = new Compass(Compass.Bearing.SOUTH);
 
+        Position expectedPosition = new CartesianPosition(2, 0);
+
+        Vehicle rover = new MarsRover(startPosition, direction);
+        rover.move();
+
+        assertEquals(expectedPosition, rover.getPosition());
+    }
 
 
 }

@@ -1,11 +1,9 @@
 package org.melody.rover;
 
-import org.melody.rover.api.IPlateauBoundary;
+import org.melody.rover.api.IPlateau;
 import org.melody.rover.api.Position;
 
-import java.security.InvalidParameterException;
-
-public class RectangularCartesianPlateau implements IPlateauBoundary {
+public class RectangularCartesianPlateau implements IPlateau {
 
     Position ll, ur = null;
 
@@ -18,7 +16,7 @@ public class RectangularCartesianPlateau implements IPlateauBoundary {
     }
 
     @Override
-    public boolean isPositionInPlateauBoundary(Position position) {
+    public boolean isPositionInBoundary(Position position) {
         if (position instanceof CartesianPosition) {
             return ((ll.compareTo(position) >= 0) && (ur.compareTo(position) <= 0));
         }

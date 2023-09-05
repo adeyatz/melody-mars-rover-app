@@ -12,7 +12,7 @@ public class MarsRover extends Vehicle {
     }
 
     @Override
-    public boolean move(Position newPosition) {
+    public boolean move() {
 
 
         return false;
