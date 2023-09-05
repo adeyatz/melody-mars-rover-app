@@ -11,6 +11,15 @@ public class MarsRover extends Vehicle {
         super(position, direction, MARS_ROVER);
     }
 
+
+    public MarsRover (int x, int y, IRotator.Heading heading) {
+        super (new CartesianPosition( x, y), new Compass(heading), MARS_ROVER);
+    }
+
+    public MarsRover(Position position, IRotator direction, String type) {
+        super(position, direction, type);
+    }
+
     @Override
     public boolean move() {
 

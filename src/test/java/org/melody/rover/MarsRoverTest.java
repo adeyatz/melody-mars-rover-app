@@ -17,6 +17,17 @@ class MarsRoverTest {
         assertNotNull(rover);
     }
 
+
+    @Test
+    void testMarsRoverConvenienceConstructor() {
+        Vehicle rover = new MarsRover (10, 20, IRotator.Heading.EAST);
+        assertNotNull(rover);
+        String expected = "10 20 E";
+        assertEquals(expected, rover.toString());
+        assertEquals(new CartesianPosition(10, 20), rover.getPosition());
+    }
+
+
     @Test
     void testMarsRoverGetPosition() {
         Position position = new CartesianPosition(2, 1);
