@@ -9,6 +9,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class RectangularCartesianPlateauTest {
 
     @Test
+    void testPlateauConstructor() {
+
+        IPlateauBoundary plateau = new RectangularCartesianPlateau(5,5);
+        assertNotNull (plateau);
+    }
+
+
+    @Test
+    void testInvalidPlateauConstructor() {
+        try {
+            IPlateauBoundary plateau = new RectangularCartesianPlateau(-5, -5);
+            fail("Constructor should throw IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
+    }
+
+
+    @Test
     void isPositionInShapeBoundary() {
 
         IPlateauBoundary shape = new RectangularCartesianPlateau(5,5);
