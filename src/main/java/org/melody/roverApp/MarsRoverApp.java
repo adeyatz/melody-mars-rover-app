@@ -11,21 +11,22 @@ public class MarsRoverApp {
     }
 
     public void Run() {
-        IStringReader inputReader = new TestStringReader();
+//        IStringReader inputReader = new DummyStringReader();
+        IStringReader inputReader = new FileStringReader();
 
         String[] input = inputReader.read();
 
         if (input.length > 3) {
-            parsePlateauParameters(input[0]);
+            initialisePlateau(input[0].trim());
 
             for (int i = 1; i < input.length; i += 2) {
-                parseCreateAndMove(input[i], input[i + 1]);
+                runRover(input[i].trim(), input[i + 1].trim());
             }
         }
     }
 
 
-    private void parsePlateauParameters(String plateau) {
+    private void initialisePlateau(String plateau) {
         // NO SYNTAX CHECKING !!!!!
         String[] input = plateau.split(" ");
         mRManager.createPlateau(Integer.parseInt(input[0]),
@@ -33,7 +34,7 @@ public class MarsRoverApp {
     }
 
 
-    private void parseCreateAndMove(String create, String move) {
+    private void runRover(String create, String move) {
         // NO SYNTAX CHECKING !!!!!
         String[] input = create.split(" ");
 
@@ -41,7 +42,8 @@ public class MarsRoverApp {
                 Integer.parseInt(input[1]),
                 input[2]);
 
-        System.out.println(mRManager.moveMarsRover(rover, move));
+        String result = mRManager.moveMarsRover(rover, move);
+        System.out.println(result);
     }
 
 
