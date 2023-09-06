@@ -71,7 +71,7 @@ class MarsRoverTest {
     }
 
 
-/*
+
     @Test
     void testMarsRoverMoves() {
         Position startPosition = new CartesianPosition(2, 1);
@@ -80,12 +80,13 @@ class MarsRoverTest {
         Position expectedPosition = new CartesianPosition(2, 0);
 
         Vehicle rover = new MarsRover(startPosition, direction);
-        rover.move();
+
+        moveRover(rover);
         assertEquals(expectedPosition, rover.getPosition());
 
         rover.rotateLeft();     // EAST
-        rover.move();           // 3,0
-        rover.move();           // 4,0
+        moveRover(rover);
+        moveRover(rover);
         expectedPosition = new CartesianPosition(4, 0);
 
         assertEquals(expectedPosition, rover.getPosition());
@@ -105,14 +106,14 @@ class MarsRoverTest {
 
         //Move input: LMLMLMLMM
         rover.rotateLeft();
-        rover.move();
+        moveRover(rover);
         rover.rotateLeft();
-        rover.move();
+        moveRover(rover);
         rover.rotateLeft();
-        rover.move();
+        moveRover(rover);
         rover.rotateLeft();
-        rover.move();
-        rover.move();
+        moveRover(rover);
+        moveRover(rover);
 
         assertEquals(expected, rover.toString());
     }
@@ -129,18 +130,22 @@ class MarsRoverTest {
         Vehicle rover = new MarsRover(startPosition, direction);
 
         //Move input: MMRMMRMRRM
-        rover.move();
-        rover.move();
+        moveRover(rover);
+        moveRover(rover);
         rover.rotateRight();
-        rover.move();
-        rover.move();
+        moveRover(rover);
+        moveRover(rover);
         rover.rotateRight();
-        rover.move();
+        moveRover(rover);
         rover.rotateRight();
         rover.rotateRight();
-        rover.move();
+        moveRover(rover);
 
         assertEquals(expected, rover.toString());
     }
-*/
+
+    void moveRover (Vehicle rover) {
+        Position nextPos = rover.getPosition().getNeighbour(rover.getRotation().getHeading());
+        rover.move(nextPos);
+    }
 }

@@ -1,11 +1,13 @@
 package org.melody.rover;
 
-import org.melody.rover.api.IPlateau;
+import org.melody.rover.api.ICheckPosition;
+import org.melody.rover.api.Plateau;
 import org.melody.rover.api.Position;
 
-public class RectangularCartesianPlateau implements IPlateau {
+public class RectangularCartesianPlateau extends Plateau {
 
     Position ll, ur = null;
+    private static final String Type = "Rectangular Cartesian";
 
     public RectangularCartesianPlateau(int width, int height) throws IllegalArgumentException {
         if ((width <= 0) || (height <= 0))
@@ -16,10 +18,15 @@ public class RectangularCartesianPlateau implements IPlateau {
     }
 
     @Override
-    public boolean isPositionInBoundary(Position position) {
+    public boolean canUsePosition(Position position) {
         if (position instanceof CartesianPosition) {
             return ((ll.compareTo(position) >= 0) && (ur.compareTo(position) <= 0));
         }
         return false;
+    }
+
+    @Override
+    protected String getType() {
+        return Type;
     }
 }

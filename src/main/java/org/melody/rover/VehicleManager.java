@@ -1,13 +1,12 @@
 package org.melody.rover;
 
-import org.melody.rover.api.IBlocked;
-import org.melody.rover.api.IPlateau;
+import org.melody.rover.api.ICheckPosition;
 import org.melody.rover.api.Position;
 import org.melody.rover.api.Vehicle;
 
 import java.util.ArrayList;
 
-public class VehicleManager implements IBlocked {
+public class VehicleManager implements ICheckPosition {
     private ArrayList<Vehicle> vehicles;
     private Vehicle currentVehicle;
 
@@ -39,13 +38,11 @@ public class VehicleManager implements IBlocked {
 
 
     @Override
-    public boolean isPositionBlocked(Position newPosition) {
-
+    public boolean canUsePosition(Position position) {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.getPosition().equals(newPosition))
+            if (vehicle.getPosition().equals(position))
                 return true;
         }
 
-        return false;
-    }
+        return false;   }
 }
