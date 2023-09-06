@@ -39,9 +39,9 @@ public class VehicleManager implements ICheckPosition {
     public boolean canUsePosition(Position position) {
         for (Vehicle vehicle : vehicles) {
             if (vehicle.getPosition().equals(position))
-                return true;
+                return false;
         }
 
-        return false;
+        return true;
     }
 }

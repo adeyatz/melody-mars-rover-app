@@ -49,14 +49,15 @@ class VehicleManagerTest {
         VehicleManager vm = new VehicleManager();
 
         Vehicle vehicle = new MarsRover (0,0,"N");
-        vm.addVehicle(vehicle);     // Position 0,0 should now be blocked by another vehicle
-
         Position testPosition = new CartesianPosition(0, 0);
         assertTrue(vm.canUsePosition(testPosition));
 
-        testPosition = new CartesianPosition(-1, 0);
+        vm.addVehicle(vehicle);     // Position 0,0 should now be blocked by another vehicle
         assertFalse(vm.canUsePosition(testPosition));
 
+
+        testPosition = new CartesianPosition(-1, 0);
+        assertTrue(vm.canUsePosition(testPosition));
     }
 
     @Test
