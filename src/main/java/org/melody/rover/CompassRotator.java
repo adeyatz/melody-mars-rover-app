@@ -10,6 +10,21 @@ public class CompassRotator extends Rotator {
         this.heading = heading;
     }
 
+    public CompassRotator (String headingAsString) {
+        this.heading = parseHeading (headingAsString);
+    }
+
+    private Heading parseHeading(String headingAsString) {
+        if ((headingAsString != null) && (headingAsString.length() == 1))
+        {
+            for (Heading h : Heading.values()) {
+                if (headingAsString.equals(h.toString().substring(0,1)))
+                    return h;
+            }
+        }
+        throw new IllegalArgumentException ("Heading must be one of 'N', 'S', 'E', 'W' ");
+    }
+
     public void rotateLeft() {
         heading = switch (heading) {
             case NORTH -> Heading.WEST;

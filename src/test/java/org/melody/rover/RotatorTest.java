@@ -42,8 +42,32 @@ class RotatorTest {
     }
 
 
+    @Test
+    void testConstructorWithString() {
 
+        Rotator dirN = new CompassRotator ("N");
+        assertEquals("N", dirN.toString());
 
+         dirN = new CompassRotator ("S");
+        assertEquals("S", dirN.toString());
+
+         dirN = new CompassRotator ("E");
+        assertEquals("E", dirN.toString());
+
+        dirN = new CompassRotator ("W");
+        assertEquals("W", dirN.toString());
+    }
+
+    @Test
+    void testConstructorWithIllegalString() {
+
+        try {
+            Rotator dirN = new CompassRotator("Q");
+            fail("Cunstructor should fail with input of Q");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
+    }
 
     @Test
     void testToStringMethodNorthEastSouthWest() {
