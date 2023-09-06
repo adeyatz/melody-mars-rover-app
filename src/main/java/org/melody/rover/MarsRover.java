@@ -16,10 +16,6 @@ public class MarsRover extends Vehicle {
         super (new CartesianPosition( x, y), new CompassRotator(heading), MARS_ROVER);
     }
 
-    public MarsRover(Position position, Rotator direction, String type) {
-        super(position, direction, type);
-    }
-
     @Override
     public void move(Position newPosition) {
         this.position = newPosition;

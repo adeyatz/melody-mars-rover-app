@@ -8,12 +8,10 @@ import java.util.ArrayList;
 
 public class VehicleManager implements ICheckPosition {
     private ArrayList<Vehicle> vehicles;
-    private Vehicle currentVehicle;
 
     public VehicleManager () {
         vehicles = new ArrayList<Vehicle>();
-        currentVehicle = null;
-    }
+      }
 
     public void addVehicle (Vehicle vehicle){
         vehicles.add(vehicle);
@@ -44,5 +42,6 @@ public class VehicleManager implements ICheckPosition {
                 return true;
         }
 
-        return false;   }
+        return false;
+    }
 }
