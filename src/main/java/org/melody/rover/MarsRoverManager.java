@@ -10,14 +10,10 @@ import java.util.List;
 public class MarsRoverManager {
     Plateau plateau;
     VehicleManager vm;
-    // TODO add MarsObjectManager object
-    Vehicle currentVehicle;
-
     ArrayList < ICheckPosition> pChecker;
-
+    // TODO add MarsObjectManager object
     public MarsRoverManager() {
         plateau = null;
-        currentVehicle = null;
         vm = new VehicleManager();
     }
 
@@ -28,20 +24,30 @@ public class MarsRoverManager {
     }
 
 
-    public boolean createMarsRover(int x, int y, String heading) {
+    public Vehicle createMarsRover(int x, int y, String heading) {
         if (pChecker == null)
             throw new IllegalArgumentException("Must create Plateau before creating a Mars Rover");
 
         // First check that the space is free
         if (CheckPosition.check(pChecker, new CartesianPosition(x,y))) {
-            currentVehicle = new MarsRover(x, y, heading);
-            vm.addVehicle(currentVehicle);
-            return true;
+            Vehicle newMarsRover = new MarsRover(x, y, heading);
+            vm.addVehicle(newMarsRover);
+            return newMarsRover;
         }
-        return false;
+        return null;
     }
 
     public VehicleManager getVehicleManager() {
         return vm;
+    }
+
+    public String moveMarsRover(Vehicle rover, String moveInstructions) {
+        if (pChecker == null)
+            throw new IllegalArgumentException("Must create Plateau before creating a Mars Rover");
+
+        Mover mover = new Mover(pChecker,rover,moveInstructions);
+
+        mover.moveVehicle();
+        return rover.printPostion();
     }
 }
