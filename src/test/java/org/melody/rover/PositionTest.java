@@ -2,6 +2,7 @@ package org.melody.rover;
 
 import org.junit.jupiter.api.Test;
 import org.melody.rover.api.Position;
+import org.melody.rover.api.Rotator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -50,24 +51,15 @@ class PositionTest {
     void testGetAdjacentPosition() {
         Position p1 = new CartesianPosition( 0, 0);
 
-        Position pN = p1.getNextDoor(Position.NextDoor.N);
-        Position pNE = p1.getNextDoor(Position.NextDoor.NE);
-        Position pE = p1.getNextDoor(Position.NextDoor.E);
-        Position pSE = p1.getNextDoor(Position.NextDoor.SE);
-        Position pS = p1.getNextDoor(Position.NextDoor.S);
-        Position pSW = p1.getNextDoor(Position.NextDoor.SW);
-        Position pW = p1.getNextDoor(Position.NextDoor.W);
-        Position pNW = p1.getNextDoor(Position.NextDoor.NW);
+        Position pN = p1.getNeighbour(Rotator.Heading.NORTH);
+        Position pE = p1.getNeighbour(Rotator.Heading.EAST);
+        Position pS = p1.getNeighbour(Rotator.Heading.SOUTH);
+        Position pW = p1.getNeighbour(Rotator.Heading.WEST);
 
         assertEquals(new CartesianPosition(0, 1), pN);
-        assertEquals(new CartesianPosition(1, 1), pNE);
         assertEquals(new CartesianPosition(1, 0), pE);
-        assertEquals(new CartesianPosition(1, -1), pSE);
         assertEquals(new CartesianPosition(0, -1), pS);
-        assertEquals(new CartesianPosition(-1, -1), pSW);
         assertEquals(new CartesianPosition(-1, 0), pW);
-        assertEquals(new CartesianPosition(-1, 1), pNW);
-
     }
 
 
@@ -76,7 +68,7 @@ class PositionTest {
         Position p1 = new CartesianPosition( 0, 0);
 
         assertEquals("0 0", p1.toString());
-        assertEquals("-1 -1", p1.getNextDoor(Position.NextDoor.SW).toString());
+        assertEquals("-1 -1", p1.getNeighbour(Rotator.Heading.SOUTH).getNeighbour(Rotator.Heading.WEST).toString());
     }
 
     @Test

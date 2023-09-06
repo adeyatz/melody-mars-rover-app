@@ -1,12 +1,12 @@
 package org.melody.rover.api;
 
-public abstract class Vehicle implements IMover, IRotator {
+public abstract class Vehicle implements IMovable {
     protected Position position;
-    protected IRotator rotation;
+    protected Rotator rotation;
 
     private String type;
 
-    public Vehicle (Position position, IRotator direction, String type) {
+    public Vehicle (Position position, Rotator direction, String type) {
         this.position = position;
         this.rotation = direction;
         this.type = type;
@@ -15,16 +15,16 @@ public abstract class Vehicle implements IMover, IRotator {
     public Position getPosition () {
         return position;
     }
-
+/*
     public Position getNextPosition () {
         return switch (rotation.getHeading()) {
-            case NORTH -> position.getNextDoor(Position.NextDoor.N);
-            case EAST -> position.getNextDoor(Position.NextDoor.E);
-            case SOUTH -> position.getNextDoor(Position.NextDoor.S);
-            case WEST -> position.getNextDoor(Position.NextDoor.W);
+            case NORTH -> position.getNeighbour(Position.Neighbour.N);
+            case EAST -> position.getNeighbour(Position.Neighbour.E);
+            case SOUTH -> position.getNeighbour(Position.Neighbour.S);
+            case WEST -> position.getNeighbour(Position.Neighbour.W);
         };
     }
-
+*/
     public void rotateRight() {
         rotation.rotateRight();
     }
@@ -33,11 +33,7 @@ public abstract class Vehicle implements IMover, IRotator {
         rotation.rotateLeft();
     }
 
-    public Heading getHeading() {
-        return rotation.getHeading();
-    }
-
-    public IRotator getRotation() {
+    public Rotator getRotation() {
         return rotation;
     }
 

@@ -1,32 +1,32 @@
 package org.melody.rover;
 
 import org.junit.jupiter.api.Test;
-import org.melody.rover.api.IRotator;
+import org.melody.rover.api.Rotator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IRotatorTest {
+class RotatorTest {
 
     @Test
     void testRotateLeft() {
-        IRotator direction = new Compass(IRotator.Heading.NORTH);
+        Rotator rotator = new CompassRotator(Rotator.Heading.NORTH);
 
-        direction.rotateLeft();
-        assertEquals("W", direction.toString());
+        rotator.rotateLeft();
+        assertEquals("W", rotator.toString());
 
-        direction.rotateLeft();
-        assertEquals("S", direction.toString());
+        rotator.rotateLeft();
+        assertEquals("S", rotator.toString());
 
-        direction.rotateLeft();
-        assertEquals("E", direction.toString());
+        rotator.rotateLeft();
+        assertEquals("E", rotator.toString());
 
-        direction.rotateLeft();
-        assertEquals("N", direction.toString());
+        rotator.rotateLeft();
+        assertEquals("N", rotator.toString());
     }
 
     @Test
     void testRotateRight() {
-        IRotator direction = new Compass(IRotator.Heading.NORTH);
+        Rotator direction = new CompassRotator(Rotator.Heading.NORTH);
 
         direction.rotateRight();
         assertEquals("E", direction.toString());
@@ -47,10 +47,10 @@ class IRotatorTest {
 
     @Test
     void testToStringMethodNorthEastSouthWest() {
-        IRotator dirN = new Compass(IRotator.Heading.NORTH);
-        IRotator dirE = new Compass(IRotator.Heading.EAST);
-        IRotator dirS = new Compass(IRotator.Heading.SOUTH);
-        IRotator dirW = new Compass(IRotator.Heading.WEST);
+        Rotator dirN = new CompassRotator(Rotator.Heading.NORTH);
+        Rotator dirE = new CompassRotator(Rotator.Heading.EAST);
+        Rotator dirS = new CompassRotator(Rotator.Heading.SOUTH);
+        Rotator dirW = new CompassRotator(Rotator.Heading.WEST);
 
         assertEquals("N", dirN.toString());
         assertEquals("E", dirE.toString());

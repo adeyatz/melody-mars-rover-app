@@ -1,17 +1,17 @@
 package org.melody.rover;
 
-import org.melody.rover.api.IRotator;
+import org.melody.rover.api.Rotator;
 
-public class Compass implements IRotator {
+public class CompassRotator extends Rotator {
 
-    Heading bearing;
+    Heading heading;
 
-    public Compass (Heading bearing) {
-        this.bearing = bearing;
+    public CompassRotator(Heading heading) {
+        this.heading = heading;
     }
 
     public void rotateLeft() {
-        bearing = switch (bearing) {
+        heading = switch (heading) {
             case NORTH -> Heading.WEST;
             case WEST -> Heading.SOUTH;
             case SOUTH -> Heading.EAST;
@@ -21,7 +21,7 @@ public class Compass implements IRotator {
 
 
     public void rotateRight() {
-        bearing = switch (bearing) {
+        heading = switch (heading) {
             case NORTH -> Heading.EAST;
             case EAST -> Heading.SOUTH;
             case SOUTH -> Heading.WEST;
@@ -31,11 +31,11 @@ public class Compass implements IRotator {
 
     @Override
     public Heading getHeading() {
-        return bearing;
+        return heading;
     }
 
     @Override
     public String toString() {
-        return (bearing.toString().substring(0,1));
+        return (heading.toString().substring(0,1));
     }
 }

@@ -2,10 +2,6 @@ package org.melody.rover.api;
 
 public abstract class Position implements Comparable {
 
-    public enum NextDoor {
-        N, NE, E, SE, S, SW, W, NW
-    }
-
     public final boolean equals(Object position) {
         if (position == null) {
             return false;
@@ -21,7 +17,7 @@ public abstract class Position implements Comparable {
 
     public abstract boolean equals(Position other);
 
-    public abstract Position getNextDoor(NextDoor direction);
+    public abstract Position getNeighbour(Rotator.Heading rotation);
 
     public abstract String toString();
 }

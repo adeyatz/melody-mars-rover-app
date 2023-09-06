@@ -1,6 +1,7 @@
 package org.melody.rover;
 
 import org.melody.rover.api.Position;
+import org.melody.rover.api.Rotator;
 
 class CartesianPosition extends Position {
 
@@ -21,28 +22,15 @@ class CartesianPosition extends Position {
     }
 
     @Override
-    public Position getNextDoor(NextDoor direction) {
-        Position result = switch (direction) {
-            case N -> new CartesianPosition(x, y + 1);
-
-            case NE -> new CartesianPosition(x + 1, y + 1);
-
-            case E -> new CartesianPosition(x + 1, y);
-
-            case SE -> new CartesianPosition(x + 1, y - 1);
-
-            case S -> new CartesianPosition(x, y - 1);
-
-            case SW -> new CartesianPosition(x - 1, y - 1);
-
-            case W -> new CartesianPosition(x - 1, y);
-
-            case NW -> new CartesianPosition(x - 1, y + 1);
-
+    public Position getNeighbour(Rotator.Heading rotation) {
+        return  switch (rotation) {
+            case NORTH -> new CartesianPosition(x, y + 1);
+            case EAST -> new CartesianPosition(x + 1, y);
+            case SOUTH -> new CartesianPosition(x, y - 1);
+            case WEST -> new CartesianPosition(x - 1, y);
         };
-
-        return result;
     }
+
 
     @Override
     public String toString() {
