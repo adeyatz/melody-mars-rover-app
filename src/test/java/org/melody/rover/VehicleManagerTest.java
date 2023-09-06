@@ -34,7 +34,7 @@ class VehicleManagerTest {
     void testRemoveVehicle() {
         VehicleManager vm = new VehicleManager();
 
-        Vehicle vehicle = new MarsRover (99,-100, Rotator.Heading.NORTH);
+        Vehicle vehicle = new MarsRover (99,-100, "N");
         vm.addVehicle(vehicle);
         assertEquals(1, vm.getVehicleCount());
 
@@ -48,7 +48,7 @@ class VehicleManagerTest {
     void testCanUsePosition () {
         VehicleManager vm = new VehicleManager();
 
-        Vehicle vehicle = new MarsRover (0,0, Rotator.Heading.NORTH);
+        Vehicle vehicle = new MarsRover (0,0,"N");
         vm.addVehicle(vehicle);     // Position 0,0 should now be blocked by another vehicle
 
         Position testPosition = new CartesianPosition(0, 0);
@@ -63,7 +63,7 @@ class VehicleManagerTest {
     void testGetVehicle() {
         VehicleManager vm = new VehicleManager();
 
-        Vehicle vehicle = new MarsRover (99,0, Rotator.Heading.NORTH);
+        Vehicle vehicle = new MarsRover (99,0, "N");
         vm.addVehicle(vehicle);     // Position 0,0 should now be blocked by another vehicle
 
         assertEquals(vehicle, vm.getVehicle(new CartesianPosition(99,0)));

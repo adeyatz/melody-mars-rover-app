@@ -12,7 +12,7 @@ public class MarsRover extends Vehicle {
     }
 
 
-    public MarsRover (int x, int y, Rotator.Heading heading) {
+    public MarsRover (int x, int y, String heading) {
         super (new CartesianPosition( x, y), new CompassRotator(heading), MARS_ROVER);
     }
 

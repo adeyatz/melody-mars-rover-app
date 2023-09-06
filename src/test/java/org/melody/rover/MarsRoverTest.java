@@ -20,10 +20,10 @@ class MarsRoverTest {
 
     @Test
     void testMarsRoverConvenienceConstructor() {
-        Vehicle rover = new MarsRover (10, 20, Rotator.Heading.EAST);
+        Vehicle rover = new MarsRover (10, 20, "E");
         assertNotNull(rover);
         String expected = "10 20 E";
-        assertEquals(expected, rover.toString());
+        assertEquals(expected, rover.printPostion());
         assertEquals(new CartesianPosition(10, 20), rover.getPosition());
     }
 
@@ -53,21 +53,21 @@ class MarsRoverTest {
     }
 
     @Test
-    void testMarsRoverToString() {
+    void testMarsRoverPrintPosition() {
         Position position = new CartesianPosition(2, 1);
         Rotator direction = new CompassRotator(Rotator.Heading.SOUTH);
         String expected = "2 1 S";
         Vehicle rover = new MarsRover(position, direction);
-        assertEquals(expected,  rover.toString());
+        assertEquals(expected,  rover.printPostion());
 
         expected = "2 1 W";
         rover.rotateRight();
-        assertEquals(expected,  rover.toString());
+        assertEquals(expected,  rover.printPostion());
 
         expected = "-999 10101 E";
         position = new CartesianPosition(-999, 10101);
         rover = new MarsRover(position, new CompassRotator(Rotator.Heading.EAST));
-        assertEquals(expected,  rover.toString());
+        assertEquals(expected,  rover.printPostion());
     }
 
 
@@ -115,7 +115,7 @@ class MarsRoverTest {
         moveRover(rover);
         moveRover(rover);
 
-        assertEquals(expected, rover.toString());
+        assertEquals(expected, rover.printPostion());
     }
 
     @Test
@@ -141,7 +141,7 @@ class MarsRoverTest {
         rover.rotateRight();
         moveRover(rover);
 
-        assertEquals(expected, rover.toString());
+        assertEquals(expected, rover.printPostion());
     }
 
     void moveRover (Vehicle rover) {
