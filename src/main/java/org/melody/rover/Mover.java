@@ -18,7 +18,9 @@ public class Mover {
         this.moveInstructions = moveInstructions;
     }
 
-    public void moveVehicle () {
+    public boolean moveVehicle () {
+
+        boolean result = true;
 
         char[] instruction = moveInstructions.toCharArray();
 
@@ -41,11 +43,13 @@ public class Mover {
                         vehicle.move(next);
                     }
                     else {
+                        result = false;
                         // Throw exception?
                     }
                 default:
                     break;
             }
         }
+        return result;
     }
 }

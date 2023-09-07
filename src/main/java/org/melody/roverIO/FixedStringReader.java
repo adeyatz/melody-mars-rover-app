@@ -1,4 +1,6 @@
-package org.melody.roverApp;
+package org.melody.roverIO;
+
+import org.melody.roverIO.IStringReader;
 
 public class FixedStringReader implements IStringReader {
 

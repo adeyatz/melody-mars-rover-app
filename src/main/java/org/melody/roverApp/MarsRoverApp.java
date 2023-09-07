@@ -1,6 +1,8 @@
 package org.melody.roverApp;
 import org.melody.rover.*;
 import org.melody.rover.api.Vehicle;
+import org.melody.roverIO.FileStringReader;
+import org.melody.roverIO.IStringReader;
 
 public class MarsRoverApp {
 
@@ -10,11 +12,23 @@ public class MarsRoverApp {
         missionController = new MarsMissionController();
     }
 
-    public void Run() {
+    private static final String FILE_NAME = "src/main/resources/MarsRoverInput.txt";
+
+    public static void main (String[] args)
+    {
+        String filename = args.length > 0 ? args[0] : FILE_NAME;
+
+        new MarsRoverApp().run(filename);
+    }
+
+    void run(String filename) {
 //        IStringReader inputReader = new DummyStringReader();
-        IStringReader inputReader = new FileStringReader();
+        IStringReader inputReader = new FileStringReader(filename);
 
         String[] input = inputReader.read();
+
+        if (input == null)
+            return;
 
         if (input.length > 3) {
             initialisePlateau(input[0].trim());
@@ -42,8 +56,9 @@ public class MarsRoverApp {
                 Integer.parseInt(input[1]),
                 input[2]);
 
-        String result = missionController.moveMarsRover(rover, move);
-        System.out.println(result);
+        missionController.moveMarsRover(rover, move);
+
+        System.out.println(rover);
     }
 
 

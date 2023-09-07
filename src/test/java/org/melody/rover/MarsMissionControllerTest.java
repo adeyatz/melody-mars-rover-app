@@ -94,7 +94,8 @@ class MarsMissionControllerTest {
 
         String moveInstructions = "LMLMLMLMM";
         String expectedResult = "1 3 N";
-        assertEquals(expectedResult, mmc.moveMarsRover (rover, moveInstructions));
+        mmc.moveMarsRover (rover, moveInstructions);
+        assertEquals(expectedResult, rover.toString());
     }
 
     @ParameterizedTest

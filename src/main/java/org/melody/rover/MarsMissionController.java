@@ -25,10 +25,10 @@ public class MarsMissionController {
 
 
     public Vehicle createMarsRover(int x, int y, String heading) {
-        if (positionCheckers == null)
+        if (plateau == null)
             throw new MarsRoverException ("Create Plateau before creating a Mars Rover");
 
-        // First check that the space is free
+        // First check that the position is free
         if (CheckPosition.check(positionCheckers, new CartesianPosition(x,y))) {
             Vehicle newMarsRover = new MarsRover(x, y, heading);
             vm.addVehicle(newMarsRover);
@@ -37,14 +37,13 @@ public class MarsMissionController {
         throw new MarsRoverException (String.format("Mars Rover must be located on the plateau in an empty cell:(%d, %d)",x,y));
     }
 
-    public String moveMarsRover(Vehicle rover, String moveInstructions) {
-        if (positionCheckers == null)
+    public boolean moveMarsRover(Vehicle rover, String moveInstructions) {
+        if (plateau == null)
             throw new MarsRoverException ("Create Plateau before creating a Mars Rover");
 
         Mover mover = new Mover(positionCheckers,rover,moveInstructions);
 
-        mover.moveVehicle();
-        return rover.toString();
+        return mover.moveVehicle();
     }
 
     public VehicleManager getVehicleManager() {
