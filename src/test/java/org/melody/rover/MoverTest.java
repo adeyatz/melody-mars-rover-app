@@ -33,7 +33,7 @@ class MoverTest {
         Mover myMover = new Mover(pChecker, vehicle, moveInstructions);
         myMover.moveVehicle();
 
-        assertEquals(expectedResult, vehicle.printPostion());
+        assertEquals(expectedResult, vehicle.toString());
 
     }
 }

@@ -17,7 +17,7 @@ public abstract class Position implements Comparable {
 
     public abstract boolean equals(Position other);
 
-    public abstract Position getNeighbour(Rotator.Heading rotation);
+    public abstract Position getNeighbour(Rotator.Heading heading);
 
     public abstract String toString();
 }

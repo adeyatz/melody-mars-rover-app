@@ -7,12 +7,12 @@ import org.melody.rover.api.Vehicle;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MarsRoverManagerTest {
+class MarsMissionControllerTest {
 
     @Test
     public void testMarsRoverManagerConstructor() {
-        MarsRoverManager mrm = new MarsRoverManager();
-        assertNotNull (mrm);
+        MarsMissionController mmc = new MarsMissionController();
+        assertNotNull (mmc);
     }
 
     @Test
@@ -24,9 +24,9 @@ class MarsRoverManagerTest {
 
     @Test
     public void testCreateRoverBeforePlateauCausesError() {
-        MarsRoverManager mrm = new MarsRoverManager();
+        MarsMissionController mmc = new MarsMissionController();
         try {
-            mrm.createMarsRover(1, 1, "E");
+            mmc.createMarsRover(1, 1, "E");
             fail("Should fail if a Vehicle is created before the Plateau");
         } catch (Exception e) {
             System.out.println(e);
@@ -36,65 +36,65 @@ class MarsRoverManagerTest {
 
     @Test
     public void testCreateMarsRoverMethod() {
-        MarsRoverManager mrm = new MarsRoverManager();
+        MarsMissionController mmc = new MarsMissionController();
         int width = 10, height = 20;
-        mrm.createPlateau (width, height);
+        mmc.createPlateau (width, height);
 
         int x = 1, y = 1;
-        mrm.createMarsRover (x,y,"E");
+        mmc.createMarsRover (x,y,"E");
 
-        assertEquals(1, mrm.getVehicleManager().getVehicleCount());
+        assertEquals(1, mmc.getVehicleManager().getVehicleCount());
 
         // Now try to add a second rover where the first rover is located - should fail with exception
         try {
-            mrm.createMarsRover(x, y, "W");
+            mmc.createMarsRover(x, y, "W");
             fail("Atttempt to create a Rover in an occupied location should fail");
-        } catch (IllegalArgumentException e) {
+        } catch (MarsRoverException e) {
             System.out.println(e);
-            assertEquals(1, mrm.getVehicleManager().getVehicleCount());
+            assertEquals(1, mmc.getVehicleManager().getVehicleCount());
         }
     }
 
 
     @Test
     public void testCreateMarsRoverBeforePlateau() {
-        MarsRoverManager mrm = new MarsRoverManager();
+        MarsMissionController mmc = new MarsMissionController();
         int width = 10, height = 20;
 
         try {
-            mrm.createMarsRover(1, 1, "E");
+            mmc.createMarsRover(1, 1, "E");
             fail("Creation of rover prior to plateua should cause exception");
-        } catch (IllegalArgumentException e) {
+        } catch (MarsRoverException e) {
             System.out.println(e);
         }
     }
 
     @Test
     public void testCreateMarsRoverOutsidePlateau() {
-        MarsRoverManager mrm = new MarsRoverManager();
+        MarsMissionController mmc = new MarsMissionController();
         int width = 10, height = 20;
 
-        mrm.createPlateau(10, 10);
+        mmc.createPlateau(10, 10);
 
         try {
-            mrm.createMarsRover(11, 11, "E");
+            mmc.createMarsRover(11, 11, "E");
             fail("Should not be able to create Mars rover outside of the plateau");
-        } catch (IllegalArgumentException e) {
+        } catch (MarsRoverException e) {
             System.out.println(e);
         }
     }
 
     @Test
     public void testMoveMarsRoverMethod() {
-        MarsRoverManager mrm = new MarsRoverManager();
-        mrm.createPlateau (5, 5);
+        MarsMissionController mmc = new MarsMissionController();
+        mmc.createPlateau (5, 5);
 
-        Vehicle rover = mrm.createMarsRover (1,2,"N");
+        Vehicle rover = mmc.createMarsRover (1,2,"N");
         assertNotNull(rover);
 
         String moveInstructions = "LMLMLMLMM";
         String expectedResult = "1 3 N";
-        assertEquals(expectedResult, mrm.moveMarsRover (rover, moveInstructions));
+        assertEquals(expectedResult, mmc.moveMarsRover (rover, moveInstructions));
     }
 
     @ParameterizedTest
@@ -104,16 +104,16 @@ class MarsRoverManagerTest {
         assertEquals(3, stPos.length);
         assertTrue(stPos[2].matches("[NSEW]"));
 
-        MarsRoverManager mrm = new MarsRoverManager();
+        MarsMissionController mmc = new MarsMissionController();
 
-        mrm.createPlateau(5,5);
+        mmc.createPlateau(5,5);
 
-        Vehicle vehicle = mrm.createMarsRover(Integer.parseInt(stPos[0]),
+        Vehicle vehicle = mmc.createMarsRover(Integer.parseInt(stPos[0]),
                                              Integer.parseInt(stPos[1]),
                                                 stPos[2]);
 
-        mrm.moveMarsRover(vehicle, moveInstructions);
-        assertEquals(expectedResult, vehicle.printPostion());
+        mmc.moveMarsRover(vehicle, moveInstructions);
+        assertEquals(expectedResult, vehicle.toString());
     }
 
 

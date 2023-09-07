@@ -42,11 +42,7 @@ public abstract class Vehicle implements IMovable {
     }
 
     public String toString () {
-        return String.format("%s %s", type, printPostion());
+        return String.format("%s %s",position, rotation);
     }
 
-
-    public String printPostion() {
-        return String.format("%s %s", position.toString(), rotation.toString());
-    }
 }

@@ -7,12 +7,12 @@ import org.melody.rover.api.Vehicle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarsRoverManager {
+public class MarsMissionController {
     Plateau plateau;
     VehicleManager vm;
     ArrayList < ICheckPosition> positionCheckers;
-    // TODO add MarsObjectManager object
-    public MarsRoverManager() {
+
+    public MarsMissionController() {
         plateau = null;
         vm = new VehicleManager();
     }
@@ -20,13 +20,13 @@ public class MarsRoverManager {
 
     public void createPlateau(int width, int height) {
         plateau = new RectangularCartesianPlateau(width,height);
-        positionCheckers = new ArrayList<>(List.of (plateau, vm));      // TODO add MarsObjectManager to this list so we check for mars obstructions too
+        positionCheckers = new ArrayList<>(List.of (plateau, vm));
     }
 
 
     public Vehicle createMarsRover(int x, int y, String heading) {
         if (positionCheckers == null)
-            throw new IllegalArgumentException("Must create Plateau before creating a Mars Rover");
+            throw new MarsRoverException ("Create Plateau before creating a Mars Rover");
 
         // First check that the space is free
         if (CheckPosition.check(positionCheckers, new CartesianPosition(x,y))) {
@@ -34,20 +34,21 @@ public class MarsRoverManager {
             vm.addVehicle(newMarsRover);
             return newMarsRover;
         }
-        throw new IllegalArgumentException("Mars Rover must be located on the plateau in an empty cell");
+        throw new MarsRoverException (String.format("Mars Rover must be located on the plateau in an empty cell:(%d, %d)",x,y));
+    }
+
+    public String moveMarsRover(Vehicle rover, String moveInstructions) {
+        if (positionCheckers == null)
+            throw new MarsRoverException ("Create Plateau before creating a Mars Rover");
+
+        Mover mover = new Mover(positionCheckers,rover,moveInstructions);
+
+        mover.moveVehicle();
+        return rover.toString();
     }
 
     public VehicleManager getVehicleManager() {
         return vm;
     }
 
-    public String moveMarsRover(Vehicle rover, String moveInstructions) {
-        if (positionCheckers == null)
-            throw new IllegalArgumentException("Must create Plateau before creating a Mars Rover");
-
-        Mover mover = new Mover(positionCheckers,rover,moveInstructions);
-
-        mover.moveVehicle();
-        return rover.printPostion();
-    }
 }

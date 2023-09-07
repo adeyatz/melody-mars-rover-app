@@ -4,10 +4,10 @@ import org.melody.rover.api.Vehicle;
 
 public class MarsRoverApp {
 
-    MarsRoverManager mRManager;
+    MarsMissionController missionController;
 
     public MarsRoverApp() {
-        mRManager = new MarsRoverManager();
+        missionController = new MarsMissionController();
     }
 
     public void Run() {
@@ -29,7 +29,7 @@ public class MarsRoverApp {
     private void initialisePlateau(String plateau) {
         // NO SYNTAX CHECKING !!!!!
         String[] input = plateau.split(" ");
-        mRManager.createPlateau(Integer.parseInt(input[0]),
+        missionController.createPlateau(Integer.parseInt(input[0]),
                 Integer.parseInt(input[1]));
     }
 
@@ -38,11 +38,11 @@ public class MarsRoverApp {
         // NO SYNTAX CHECKING !!!!!
         String[] input = create.split(" ");
 
-        Vehicle rover = mRManager.createMarsRover(Integer.parseInt(input[0]),
+        Vehicle rover = missionController.createMarsRover(Integer.parseInt(input[0]),
                 Integer.parseInt(input[1]),
                 input[2]);
 
-        String result = mRManager.moveMarsRover(rover, move);
+        String result = missionController.moveMarsRover(rover, move);
         System.out.println(result);
     }
 
