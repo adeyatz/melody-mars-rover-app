@@ -15,16 +15,7 @@ public abstract class Vehicle implements IMovable {
     public Position getPosition () {
         return position;
     }
-/*
-    public Position getNextPosition () {
-        return switch (rotation.getHeading()) {
-            case NORTH -> position.getNeighbour(Position.Neighbour.N);
-            case EAST -> position.getNeighbour(Position.Neighbour.E);
-            case SOUTH -> position.getNeighbour(Position.Neighbour.S);
-            case WEST -> position.getNeighbour(Position.Neighbour.W);
-        };
-    }
-*/
+
     public void rotateRight() {
         rotation.rotateRight();
     }

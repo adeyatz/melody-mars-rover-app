@@ -4,29 +4,28 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileStringReader implements IStringReader{
 
-    private static final String FILE_NAME = "src/main/resources/MarsRoverInput.csv";
+    private static final String FILE_NAME = "src/main/resources/MarsRoverInput.txt";
     @Override
-    public String[] read()  {
-
-        String firstLine;
-
-        BufferedReader reader = null;
+    public String[] read() {
         try {
-            reader = new BufferedReader(new FileReader(FILE_NAME));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            do {
-                firstLine = reader.readLine();
-            } while ((firstLine != null) && firstLine.startsWith("#"));
-            reader.close();
+            List<String> lines = new ArrayList<String>();
+            FileReader fileReader = new FileReader(FILE_NAME);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (!line.startsWith("#"))
+                    lines.add(line);
+            }
+            bufferedReader.close();
+            return lines.toArray(new String[lines.size()]);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
-        return firstLine.split(",");
+        return null;
     }
 }
