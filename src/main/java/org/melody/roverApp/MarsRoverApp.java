@@ -6,13 +6,13 @@ import org.melody.roverIO.IStringReader;
 
 public class MarsRoverApp {
 
+    private static final String FILE_NAME = "src/main/resources/MarsRoverInput.txt";
     MarsMissionController missionController;
 
     public MarsRoverApp() {
         missionController = new MarsMissionController();
     }
 
-    private static final String FILE_NAME = "src/main/resources/MarsRoverInput.txt";
 
     public static void main (String[] args)
     {
