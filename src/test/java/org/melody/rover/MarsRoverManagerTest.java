@@ -45,11 +45,44 @@ class MarsRoverManagerTest {
 
         assertEquals(1, mrm.getVehicleManager().getVehicleCount());
 
-        // Now try to add a second rover where the first rover is located - should fail
-        assertNull (mrm.createMarsRover (x,y,"W"));
-        assertEquals(1, mrm.getVehicleManager().getVehicleCount());
+        // Now try to add a second rover where the first rover is located - should fail with exception
+        try {
+            mrm.createMarsRover(x, y, "W");
+            fail("Atttempt to create a Rover in an occupied location should fail");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+            assertEquals(1, mrm.getVehicleManager().getVehicleCount());
+        }
     }
 
+
+    @Test
+    public void testCreateMarsRoverBeforePlateau() {
+        MarsRoverManager mrm = new MarsRoverManager();
+        int width = 10, height = 20;
+
+        try {
+            mrm.createMarsRover(1, 1, "E");
+            fail("Creation of rover prior to plateua should cause exception");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void testCreateMarsRoverOutsidePlateau() {
+        MarsRoverManager mrm = new MarsRoverManager();
+        int width = 10, height = 20;
+
+        mrm.createPlateau(10, 10);
+
+        try {
+            mrm.createMarsRover(11, 11, "E");
+            fail("Should not be able to create Mars rover outside of the plateau");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
+    }
 
     @Test
     public void testMoveMarsRoverMethod() {

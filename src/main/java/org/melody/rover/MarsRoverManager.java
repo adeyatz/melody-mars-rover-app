@@ -34,7 +34,7 @@ public class MarsRoverManager {
             vm.addVehicle(newMarsRover);
             return newMarsRover;
         }
-        return null;
+        throw new IllegalArgumentException("Mars Rover must be located on the plateau in an empty cell");
     }
 
     public VehicleManager getVehicleManager() {
