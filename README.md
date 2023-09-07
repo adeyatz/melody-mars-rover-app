@@ -92,8 +92,8 @@ The default test file contains the following test:
 `3 3 E`  
 `MMRMMRMRRM`
 
-To illustrate Rovers not colliding the following could be used (where rover one finishes in location (1,3))  
-`/# Example Test Case, where rovers collide at position (1,3)`  
+To illustrate a case of Rovers avoiding collision the following input could be used (where rover one finishes in location (1,3))  
+`/# Example Test Case, where rovers would collide at position (1,3)`  
 `5 5`  
 `1 2 N`  
 `LMLMLMLMM`   
@@ -104,17 +104,22 @@ To illustrate Rovers not colliding the following could be used (where rover one 
 
 
 ### Future thoughts
-In the UML diagram [here](docs/Melody Mars Rover UML v4.png) all the classes above the Red line have been implemented. However that does mean that conversely none of the classes below the red line have been.
-In addition, the main Mars Rover functionality that is performed by the classes below the green line and have been unit tested. The classes above the green line are purely there to create an application that
-can be run, and read input from a file, so are not particularly robust to rogue input and the like
+In the UML diagram [here](docs/Melody Mars Rover UML v4.png) all the classes above the Red line have been implemented. However 
+that does mean that conversely none of the classes below the red line have been implemented due to time contraints.
 
-Here are some thoughts about how we could expand the application:
+
+The main Mars Rover functionality that is performed by the classes below the green 
+line have been unit tested. The classes above the green line are purely there to create an 
+application that
+can be run, and to read input from a file, so are not particularly robust to rogue inputs and have not been unit tested
+
+Here are some thoughts about how application could be expanded:
 + Finish coding the classes that are missing!
 + Enable the MarsRover to be 'decorated' with a camera and / or robotic arm
 + Enable the MarsRover to collect objects and place in a basket
 + Implement the MarsRoverObject classes, so that other objects besides vehicles can be positioned in the grid
 + Refactor the test classes given more time
-+ Provide a better UI component, maybe a graphical representation of the grid and what is located where 
++ Provide a better UI component, maybe a graphical representation of the grid and what object is positioned at each location 
 
 
 
