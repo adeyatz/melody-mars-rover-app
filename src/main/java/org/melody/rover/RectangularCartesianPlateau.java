@@ -20,7 +20,7 @@ public class RectangularCartesianPlateau extends Plateau {
     @Override
     public boolean canUsePosition(Position position) {
         if (position instanceof CartesianPosition) {
-            return (ll.greaterOrEqual(position) && (ur.lessOrEqual(position)));
+            return (ll.lessOrEqual(position) && (ur.greaterOrEqual(position)));
         }
         return false;
     }

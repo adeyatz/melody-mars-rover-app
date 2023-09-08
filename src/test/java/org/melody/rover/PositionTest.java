@@ -81,31 +81,40 @@ class PositionTest {
 
 
     @Test
-    void testGreaterOrEqual() {
+    void testLessOrEqual() {
         Position p1 = new CartesianPosition(0, 0);
 
-        assertTrue (p1.greaterOrEqual(p1));
-        assertTrue (p1.greaterOrEqual(new CartesianPosition(0,0)));
-        assertTrue (p1.greaterOrEqual(new CartesianPosition(1,0)));
-        assertTrue (p1.greaterOrEqual(new CartesianPosition(0,1)));
-        assertFalse(p1.greaterOrEqual(new CartesianPosition(-1,1)));
-        assertFalse(p1.greaterOrEqual(new CartesianPosition(0,-1)));
-
+        assertTrue (p1.lessOrEqual(p1));
+        assertTrue (p1.lessOrEqual(new CartesianPosition(0,0)));
+        // Go CW round the grid, starting N
+        assertTrue (p1.lessOrEqual(new CartesianPosition(0,1)));
+        assertTrue (p1.lessOrEqual(new CartesianPosition(1,1)));
+        assertTrue (p1.lessOrEqual(new CartesianPosition(1,0)));
+        assertFalse(p1.lessOrEqual(new CartesianPosition(1,-1)));
+        assertFalse(p1.lessOrEqual(new CartesianPosition(0,-1)));
+        assertFalse(p1.lessOrEqual(new CartesianPosition(-1,-1)));
+        assertFalse(p1.lessOrEqual(new CartesianPosition(-1,0)));
+        assertFalse(p1.lessOrEqual(new CartesianPosition(-1,1)));
     }
 
 
 
 
     @Test
-    void testLessOrEqual() {
+    void testGreaterOrEqual() {
         Position p1 = new CartesianPosition(0, 0);
-        assertTrue (p1.lessOrEqual(p1));
-        assertTrue (p1.lessOrEqual(new CartesianPosition(0,0)));
-        assertTrue (p1.lessOrEqual(new CartesianPosition(-1,0)));
-        assertTrue (p1.lessOrEqual(new CartesianPosition(0,-1)));
-        assertFalse(p1.lessOrEqual(new CartesianPosition(1,0)));
-        assertFalse(p1.lessOrEqual(new CartesianPosition(0,1)));
+        assertTrue (p1.greaterOrEqual(p1));
+        assertTrue (p1.greaterOrEqual(new CartesianPosition(0,0)));
+        // Go CW round the grid, starting N
+        assertFalse(p1.greaterOrEqual(new CartesianPosition(0,1)));
+        assertFalse(p1.greaterOrEqual(new CartesianPosition(1,1)));
+        assertFalse(p1.greaterOrEqual(new CartesianPosition(1,0)));
+        assertFalse(p1.greaterOrEqual(new CartesianPosition(1,-1)));
 
+        assertTrue (p1.greaterOrEqual(new CartesianPosition(0,-1)));
+        assertTrue (p1.greaterOrEqual(new CartesianPosition(-1,-1)));
+        assertTrue (p1.greaterOrEqual(new CartesianPosition(-1,0)));
+        assertFalse(p1.greaterOrEqual(new CartesianPosition(-1,1)));
     }
 
 }

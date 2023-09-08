@@ -24,7 +24,7 @@ public class FileStringReader implements IStringReader {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
-                if (!line.startsWith("#"))
+                if (!line.startsWith("#") && (line.length() > 0))
                     lines.add(line);
             }
             bufferedReader.close();

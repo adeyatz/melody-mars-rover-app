@@ -85,7 +85,7 @@ which reflect the 3 types of string input to the MarsRover app
 
 ### Tests
 The default test file contains the following test:  
-`/# Example Test Case, from Mars Rover Brief 1.1.0`   
+`# Example Test Case, from Mars Rover Brief 1.1.0`   
 `5 5`  
 `1 2 N`  
 `LMLMLMLMM`   
@@ -93,14 +93,18 @@ The default test file contains the following test:
 `MMRMMRMRRM`
 
 To illustrate a case of Rovers avoiding collision the following input could be used (where rover one finishes in location (1,3))  
-`/# Example Test Case, where rovers would collide at position (1,3)`  
+`# Example Test Case, where rovers would collide at position (1,3)`  
 `5 5`  
 `1 2 N`  
 `LMLMLMLMM`   
 `1 2 N`  
 `MMRMMRMRRM`
 
-
+A Round the outside test, contrained by the boundary on each side  
+`# Round the outside`  
+`5 5`  
+`0 0 N`  
+`MMMMMMRMMMMMMRMMMMMMRMMMMMM`  
 
 
 ### Future thoughts

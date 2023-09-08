@@ -34,7 +34,7 @@ class CartesianPosition extends Position {
 
 
     @Override
-    public boolean greaterOrEqual(Position position) {
+    public boolean lessOrEqual(Position position) {
         if (position instanceof CartesianPosition) {
             if (((CartesianPosition) position).x >= x  &&  ((CartesianPosition) position).y >= y) {
                 return true;
@@ -44,7 +44,7 @@ class CartesianPosition extends Position {
     }
 
     @Override
-    public boolean lessOrEqual(Position position) {
+    public boolean greaterOrEqual(Position position) {
         if (position instanceof CartesianPosition) {
             if (((CartesianPosition) position).x <= x  &&  ((CartesianPosition) position).y <= y) {
                 return true;
