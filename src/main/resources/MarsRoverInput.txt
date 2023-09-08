@@ -1,6 +1,10 @@
 # Example Test Case, from Mars Rover Brief 1.1.0
 5 5
+#1 2 N
+#LMLMLMLMM
+#3 3 E
+#MMRMMRMRRM
+1 3 N
+L
 1 2 N
-LMLMLMLMM
-3 3 E
-MMRMMRMRRM
+MMRMMMMMMMRMMMMRRM

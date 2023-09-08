@@ -1,6 +1,6 @@
 package org.melody.rover.api;
 
-public abstract class Position implements Comparable {
+public abstract class Position {
 
     public final boolean equals(Object position) {
         if (position == null) {
@@ -20,4 +20,8 @@ public abstract class Position implements Comparable {
     public abstract Position getNeighbour(Rotator.Heading heading);
 
     public abstract String toString();
+
+    public abstract boolean greaterOrEqual (Position other);
+
+    public abstract boolean lessOrEqual (Position other );
 }

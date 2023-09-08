@@ -32,22 +32,30 @@ class CartesianPosition extends Position {
     }
 
 
+
     @Override
-    public String toString() {
-        return String.format("%d %d", x, y);
+    public boolean greaterOrEqual(Position position) {
+        if (position instanceof CartesianPosition) {
+            if (((CartesianPosition) position).x >= x  &&  ((CartesianPosition) position).y >= y) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
-    public int compareTo(Object position) {
+    public boolean lessOrEqual(Position position) {
         if (position instanceof CartesianPosition) {
-            if (((CartesianPosition) position).x < x  || ((CartesianPosition) position).y < y) {
-                return -1;
-            } else if (((CartesianPosition) position).x > x || ((CartesianPosition) position).y > y) {
-                return 1;
-            } else {
-                return 0;
+            if (((CartesianPosition) position).x <= x  &&  ((CartesianPosition) position).y <= y) {
+                return true;
             }
         }
-        return -1;
+        return false;
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("%d %d", x, y);
     }
 }

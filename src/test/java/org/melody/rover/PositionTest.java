@@ -79,44 +79,33 @@ class PositionTest {
     }
 
 
+
     @Test
-    void testCompareToMethodLessThan() {
+    void testGreaterOrEqual() {
         Position p1 = new CartesianPosition(0, 0);
 
-        int expected = -1;
+        assertTrue (p1.greaterOrEqual(p1));
+        assertTrue (p1.greaterOrEqual(new CartesianPosition(0,0)));
+        assertTrue (p1.greaterOrEqual(new CartesianPosition(1,0)));
+        assertTrue (p1.greaterOrEqual(new CartesianPosition(0,1)));
+        assertFalse(p1.greaterOrEqual(new CartesianPosition(-1,1)));
+        assertFalse(p1.greaterOrEqual(new CartesianPosition(0,-1)));
 
-        assertEquals(expected, p1.compareTo(new CartesianPosition(-1, 0)));
-        assertEquals(expected, p1.compareTo(new CartesianPosition( 0, -1)));
-        assertEquals(expected, p1.compareTo(new CartesianPosition(-1, -1)));
-        assertEquals(expected, p1.compareTo(new CartesianPosition(-1, 1000)));
     }
 
-    @Test
-    void testCompareToMethodEquals() {
-        Position p1 = new CartesianPosition(0, 0);
 
-        int expected = 0;
 
-        assertEquals(expected, p1.compareTo(p1));
-        assertEquals(expected, p1.compareTo(new CartesianPosition( 0, 0)));
-
-        p1 = new CartesianPosition(1000, 999);
-        assertEquals(expected, p1.compareTo(new CartesianPosition(1000, 999)));
-
-        p1 = new CartesianPosition(-333, -222);
-        assertEquals(expected, p1.compareTo(new CartesianPosition(-333, -222)));
-    }
 
     @Test
-    void testCompareToMethodGreaterThan() {
+    void testLessOrEqual() {
         Position p1 = new CartesianPosition(0, 0);
+        assertTrue (p1.lessOrEqual(p1));
+        assertTrue (p1.lessOrEqual(new CartesianPosition(0,0)));
+        assertTrue (p1.lessOrEqual(new CartesianPosition(-1,0)));
+        assertTrue (p1.lessOrEqual(new CartesianPosition(0,-1)));
+        assertFalse(p1.lessOrEqual(new CartesianPosition(1,0)));
+        assertFalse(p1.lessOrEqual(new CartesianPosition(0,1)));
 
-        int expected = 1;
-
-        assertEquals(expected, p1.compareTo(new CartesianPosition(1, 0)));
-        assertEquals(expected, p1.compareTo(new CartesianPosition( 0, 1)));
-        assertEquals(expected, p1.compareTo(new CartesianPosition(1000, 999)));
-        assertEquals(expected, p1.compareTo(new CartesianPosition(0, 1000)));
     }
 
 }
